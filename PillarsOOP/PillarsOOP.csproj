@@ -11,6 +11,8 @@
     <None Remove="ExerciseRentalCars\" />
     <None Remove="ExerciseRentalCars\Interfaces\" />
     <None Remove="ExerciseRentalCars\Models\" />
+    <None Remove="Exercise2\" />
+    <None Remove="Exercise2\IDeposit\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -18,5 +20,7 @@
     <Folder Include="ExerciseRentalCars\" />
     <Folder Include="ExerciseRentalCars\Interfaces\" />
     <Folder Include="ExerciseRentalCars\Models\" />
+    <Folder Include="Exercise2\" />
+    <Folder Include="Exercise2\Interfaces\" />
   </ItemGroup>
 </Project>
