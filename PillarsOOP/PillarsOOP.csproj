@@ -9,10 +9,14 @@
     <None Remove="Models\" />
     <None Remove="Interfaces\" />
     <None Remove="ExerciseRentalCars\" />
+    <None Remove="ExerciseRentalCars\Interfaces\" />
+    <None Remove="ExerciseRentalCars\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Interfaces\" />
     <Folder Include="ExerciseRentalCars\" />
+    <Folder Include="ExerciseRentalCars\Interfaces\" />
+    <Folder Include="ExerciseRentalCars\Models\" />
   </ItemGroup>
 </Project>
