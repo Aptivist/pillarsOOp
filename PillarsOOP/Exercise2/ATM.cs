@@ -3,19 +3,30 @@ using PillarsOOP.Exercise2.Interfaces;
 
 namespace PillarsOOP.Exercise2
 {
-    public class ATM : IDeposit, IWithdraw
+    public class ATM : IDeposit, IWithdraw, ITransactionValidation
     {
-        public IDeposit DepositService { get; set; }
-        public IWithdraw WithdrawService { get; set; }
+        private IDeposit _depositService;
+        private IWithdraw _withdrawService;
+        private ITransactionValidation _transactionValidation;
+
+        public bool IsDepositSupported => _transactionValidation.IsDepositSupported;
+        public bool IsWithDrawSupported => _transactionValidation.IsWithDrawSupported;
+
+        public ATM(IDeposit deposit, IWithdraw withdraw, ITransactionValidation transaction)
+        {
+            _depositService = deposit;
+            _withdrawService = withdraw;
+            _transactionValidation = transaction;
+        }
 
         public void Deposit(decimal amount)
         {
-            DepositService?.Deposit(amount);
+            _depositService?.Deposit(amount);
         }
 
         public void Withdraw(decimal amount)
         {
-            WithdrawService?.Withdraw(amount);
+            _withdrawService?.Withdraw(amount);
         }
     }
 }

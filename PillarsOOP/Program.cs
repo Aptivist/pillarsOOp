@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using PillarsOOP.Exercise2;
+using PillarsOOP.Exercise2.Interfaces;
 using PillarsOOP.ExerciseRentalCars.Interfaces;
 using PillarsOOP.ExerciseRentalCars.Models;
 using PillarsOOP.Interfaces;
@@ -11,74 +13,30 @@ namespace PillarsOOP
     {
         static void Main(string[] args)
         {
-            var products = new List<IPrice>();
-            //ask for insurance
-            var insurance = new CarInsurance();
-            insurance.Name = "insurance";
-            products.Add(insurance);
+            var factory = new Factory();
+            //what bank?
+            //1.santader
+            //2.bancomer
+            //3. amex
+            var bancomer = new Bancomer();
+            //var santander = new Santander();
+            var atm = new ATM(bancomer, null, bancomer);
+            //var atm2 = new ATM(santander, santander, santander);
+            //what transaction?
+            //1.deposit
+            //2.withdraw
+            var transactionType = 1;
+            decimal amount = 10;
 
-            //ask for vehicle
-            var electricBike = new ElectricBike();
-            electricBike.Days = 3;
-
-            if (electricBike.IsValid())
+            if (atm.IsDepositSupported && transactionType == 1)
             {
-                //add
-                products.Add(electricBike);
-            }
-            else
+                atm.Deposit(amount);
+            }//else deposit not supported
+
+            if (atm.IsWithDrawSupported && transactionType == 2)
             {
-                Console.WriteLine("it is not valid electric bike");
-                return;
-            }
-
-            var moto = new MotorCycle();
-            moto.Days = 4;
-
-            if (moto.IsValid())
-            {
-                //add
-                products.Add(moto);
-            }
-            else
-            {
-                Console.WriteLine("it is not valid moto");
-            }
-
-            var car = new Car();
-            car.Weeks = 1;
-            //is valid?
-            if (car.IsValid())
-            {
-                //add
-                products.Add(car);
-            }
-            else
-            {
-                Console.WriteLine("it is not valid Car");
-            }
-
-            double total = 0;
-
-            foreach (var product in products)
-            {
-                total = total + product.GetTotal();
-
-                //print products
-
-                if (product is Vehicle)
-                {
-                    var vehicle = product as Vehicle;
-                    Console.WriteLine($"Name : {vehicle.Name}");
-                }
-                else if (product is CarInsurance)
-                {
-                    var carInsurance = product as CarInsurance;
-                    Console.WriteLine($"Name : ${carInsurance.Name}");
-                }
-            }
-
-            Console.WriteLine($"Total price: ${total}");
+                atm.Withdraw(amount);
+            }//else Withdraw not supported
         }
     }
 }
