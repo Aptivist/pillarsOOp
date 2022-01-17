@@ -6,6 +6,11 @@ namespace PillarsOOP.Exercise2.Interfaces
         ITransaction GetInstance(BankType bankType);
     }
 
+    public interface IBankOperations : ITransaction, ITransactionValidation
+    {
+
+    }
+
     public enum BankType
     {
         Santander = 1,

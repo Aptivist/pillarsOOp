@@ -13,6 +13,7 @@
     <None Remove="ExerciseRentalCars\Models\" />
     <None Remove="Exercise2\" />
     <None Remove="Exercise2\IDeposit\" />
+    <None Remove="Exercise3\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -22,5 +23,6 @@
     <Folder Include="ExerciseRentalCars\Models\" />
     <Folder Include="Exercise2\" />
     <Folder Include="Exercise2\Interfaces\" />
+    <Folder Include="Exercise3\" />
   </ItemGroup>
 </Project>

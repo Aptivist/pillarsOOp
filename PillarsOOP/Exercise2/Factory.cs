@@ -10,6 +10,7 @@ namespace PillarsOOP.Exercise2
             switch (bankType)
             {
                 case BankType.Santander:
+                    //santader v2
                     return new Santander();
                 case BankType.AMEX:
                     return new AmericanExpress();
