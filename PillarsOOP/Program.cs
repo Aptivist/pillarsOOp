@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PillarsOOP.Exercise2;
 using PillarsOOP.Exercise2.Interfaces;
 using PillarsOOP.ExerciseRentalCars.Interfaces;
@@ -13,30 +14,38 @@ namespace PillarsOOP
     {
         static void Main(string[] args)
         {
-            var factory = new Factory();
-            //what bank?
-            //1.santader
-            //2.bancomer
-            //3. amex
-            var bancomer = new Bancomer();
-            //var santander = new Santander();
-            var atm = new ATM(bancomer, null, bancomer);
-            //var atm2 = new ATM(santander, santander, santander);
-            //what transaction?
-            //1.deposit
-            //2.withdraw
-            var transactionType = 1;
-            decimal amount = 10;
+            var myType = Type.GetType("PillarsOOP.Models.CoffeeMaker");
+            DoSoemthing(myType);
+        }
 
-            if (atm.IsDepositSupported && transactionType == 1)
+        public static void DoSoemthing(Type myType)
+        {
+            var methods = myType.GetMethods();
+            var obj = Activator.CreateInstance(myType);
+            //var method = myType.GetMethod("PrintName");
+            foreach (var m in methods)
             {
-                atm.Deposit(amount);
-            }//else deposit not supported
+                Console.WriteLine(m.Name);
+                if (m.GetParameters() == null || !m.GetParameters().Any())
+                {
+                    m.Invoke(obj, null);
+                }
 
-            if (atm.IsWithDrawSupported && transactionType == 2)
-            {
-                atm.Withdraw(amount);
-            }//else Withdraw not supported
+            }
+        }
+
+
+    }
+
+
+
+    public class MyPerson
+    {
+        public string Name { get; set; }
+
+        public void PrintName()
+        {
+            Console.WriteLine($"My name is {Name}");
         }
     }
 }
