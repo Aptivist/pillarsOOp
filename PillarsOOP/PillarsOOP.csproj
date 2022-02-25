@@ -14,6 +14,7 @@
     <None Remove="Exercise2\" />
     <None Remove="Exercise2\IDeposit\" />
     <None Remove="Exercise3\" />
+    <None Remove="Delegates\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -24,5 +25,6 @@
     <Folder Include="Exercise2\" />
     <Folder Include="Exercise2\Interfaces\" />
     <Folder Include="Exercise3\" />
+    <Folder Include="Delegates\" />
   </ItemGroup>
 </Project>
